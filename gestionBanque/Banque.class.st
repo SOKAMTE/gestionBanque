@@ -32,7 +32,7 @@ compteList addFirst: unCompteList
 
 { #category : #operations }
 Banque >> creerCompte: unCompte client: unClient [
-|compte client banque|
+|compte client banque tail|
 banque := self.
 client := unClient.
 compte := unCompte.

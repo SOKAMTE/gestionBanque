@@ -36,7 +36,7 @@ compte := unCompte
 Client >> depot: uneSolde [
 self compte etat 
 	ifFalse: [ ^false ].
-	uneSolde < 1
+	uneSolde<1
 		ifTrue: [ ^false ]
 		ifFalse: [ self compte solde: self compte + uneSolde. ^true ]
 ]
