@@ -6,7 +6,8 @@ Class {
 		'numeroCni',
 		'nomClient',
 		'age',
-		'compte'
+		'compte',
+		'nom'
 	],
 	#category : #gestionBanque
 }
@@ -50,14 +51,22 @@ Client >> id: anObject [
 id := anObject 
 ]
 
+{ #category : #initialization }
+Client >> initialize [ 
+super initialize.
+nom := ''.
+id := 1.
+compte := nil
+]
+
 { #category : #getters }
 Client >> nomClient [
 ^nomClient
 ]
 
 { #category : #setters }
-Client >> nomClient: unNomClient [
-nomClient := unNomClient
+Client >> nomClient: anObject [
+nomClient := anObject
 ]
 
 { #category : #getters }
@@ -81,4 +90,19 @@ Client >> retirer: unMontant [
 						ifTrue: [ (self compte) solde: (self compte). unMontant. ^true]
 					 ] 
 				
+]
+
+{ #category : #operations }
+Client >> transferer: unMontant client: unClient [
+(self compte etat) ifFalse: [ Transcript show: 'Ce compte a été bloqué';cr. ^false ].
+	(unMontant < 1)
+		ifTrue: [ ^false ]
+		ifFalse: [ 
+				(self retirer: unMontant)
+					ifTrue: [ 
+							(unClient depot: unMontant )
+								ifTrue: [ ^true ]
+								ifFalse: [ ^false ]
+						 ]
+			 ]
 ]
