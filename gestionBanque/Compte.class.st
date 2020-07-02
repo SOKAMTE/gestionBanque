@@ -13,12 +13,21 @@ Class {
 
 { #category : #getters }
 Compte >> etat [
+"Il est permet de savoir si un compte est: soit ouvert ou soit fermé"
 ^etat 
 ]
 
 { #category : #setters }
-Compte >> etat: unEtat [
-etat := unEtat
+Compte >> etat: aBoolean [
+etat := aBoolean  
+]
+
+{ #category : #initialization }
+Compte >> initialize [ 
+"initialement la solde présent dans le compte est à 0"
+solde := 0.
+"initialement le compte est ouvert, donc etat est à true"
+etat := true
 ]
 
 { #category : #getters }
@@ -48,6 +57,7 @@ Compte >> solde [
 
 { #category : #setters }
 Compte >> solde: uneSolde [
+"Si etat est à true le compte est ouvert, si etat est à false le compte est fermé"
 solde := uneSolde 
 ]
 
