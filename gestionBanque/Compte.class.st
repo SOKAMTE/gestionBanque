@@ -22,6 +22,11 @@ Compte >> etat: aBoolean [
 etat := aBoolean  
 ]
 
+{ #category : #operations }
+Compte >> ferme [
+self etat: false
+]
+
 { #category : #initialization }
 Compte >> initialize [ 
 "initialement la solde présent dans le compte est à 0"
@@ -48,6 +53,11 @@ Compte >> numeroCompte [
 { #category : #setters }
 Compte >> numeroCompte: unNumeroCompte [
 numeroCompte := unNumeroCompte 
+]
+
+{ #category : #operations }
+Compte >> ouvrir [
+self etat: true
 ]
 
 { #category : #getters }
